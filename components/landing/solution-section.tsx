@@ -44,7 +44,7 @@ export function SolutionSection() {
             The Solution
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-balance">
-            SmartCar Care — Reinvented
+            CarsGlow — Reinvented
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
             Premium doorstep car care powered by technology, driven by sustainability.

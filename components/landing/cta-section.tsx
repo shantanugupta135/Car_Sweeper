@@ -2,7 +2,13 @@
 
 import { ArrowRight, Zap } from "lucide-react"
 
+const WHATSAPP_URL = "https://wa.me/919953745105"
+
 export function CTASection({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const handleGetStarted = () => {
+    window.open(WHATSAPP_URL, "_blank")
+  }
+
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Glowing background */}
@@ -27,7 +33,7 @@ export function CTASection({ onNavigate }: { onNavigate: (page: string) => void 
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => onNavigate("signup")}
+              onClick={handleGetStarted}
               className="group flex items-center gap-2 px-10 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,212,255,0.35)] hover:scale-[1.02] active:scale-[0.98]"
             >
               Claim Free Trial

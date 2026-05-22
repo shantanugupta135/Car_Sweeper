@@ -3,7 +3,13 @@
 import Image from "next/image"
 import { Droplets, ArrowRight, Star } from "lucide-react"
 
+const WHATSAPP_URL = "https://wa.me/919953745105"
+
 export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const handleGetStarted = () => {
+    window.open(WHATSAPP_URL, "_blank")
+  }
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background gradient layers */}
@@ -20,40 +26,47 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left content */}
           <div className="flex flex-col gap-8">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 w-fit animate-slide-in-left hover:shadow-lg hover:shadow-primary/10 transition-all">
-              <Droplets className="w-4 h-4 text-primary animate-bounce-subtle" />
-              <span className="text-sm font-medium text-primary">India&apos;s #1 Doorstep Car Care</span>
+            {/* Catchy tagline */}
+            <div className="space-y-2 animate-slide-in-left">
+              <p className="text-primary font-semibold text-sm tracking-wide uppercase">
+                Stop Worrying. Start Watching.
+              </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 hover:shadow-lg hover:shadow-primary/10 transition-all">
+                <Droplets className="w-4 h-4 text-primary animate-bounce-subtle" />
+                <span className="text-sm font-medium text-primary">Track Every Wash. Trust Every Clean.</span>
+              </div>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground text-balance animate-slide-in-left animation-delay-100">
-              Your Car Deserves a{" "}
+              Your Car&apos;s{" "}
               <span className="text-primary relative inline-block">
-                Daily Shine
+                VIP Treatment
                 <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-transparent animate-gradient-flow" />
               </span>
               <br />
-              At Your Doorstep
+              <span className="text-2xl sm:text-3xl lg:text-4xl text-muted-foreground font-medium">While You Sip Your Morning Coffee</span>
             </h1>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg text-pretty animate-slide-in-left animation-delay-200">
-              Premium waterless car cleaning delivered to your parking spot every morning.
-              No water waste. No hassle. Just a spotless car, every single day.
+              <span className="text-foreground font-medium">No more trusting strangers with your prized possession.</span>{" "}
+              Watch your car being cleaned live on your phone. Real-time tracking, verified professionals, 
+              and photo proof of every wash - all from the comfort of your home.
             </p>
 
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-left animation-delay-300">
               <button
-                onClick={() => onNavigate("signup")}
+                onClick={handleGetStarted}
                 className="group relative flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/40 active:scale-95 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative z-10">Start Free Trial</span>
                 <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </button>
+              {/* Sign In button hidden but code kept intact */}
               <button
-                onClick={() => onNavigate("login")}
-                className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 text-foreground font-semibold text-lg transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 active:scale-95"
+                onClick={() => onNavigate("phone-login")}
+                className="hidden items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 text-foreground font-semibold text-lg transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 active:scale-95"
               >
                 Sign In
               </button>
@@ -152,18 +165,9 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                 {/* Spray effect */}
                 <div className="absolute left-0 top-1/2 w-20 h-20 pointer-events-none">
                   <svg className="w-full h-full text-cyan-400/40" viewBox="0 0 100 100" fill="none">
-                    {[1, 2, 3].map((j) => (
-                      <line
-                        key={j}
-                        x1="50"
-                        y1="50"
-                        x2={50 + Math.cos((j * 2 * Math.PI) / 3) * 40}
-                        y2={50 + Math.sin((j * 2 * Math.PI) / 3) * 40}
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        opacity="0.5"
-                      />
-                    ))}
+                    <line x1="50" y1="50" x2="90" y2="50" stroke="currentColor" strokeWidth="2" opacity="0.5" />
+                    <line x1="50" y1="50" x2="25" y2="15.36" stroke="currentColor" strokeWidth="2" opacity="0.5" />
+                    <line x1="50" y1="50" x2="25" y2="84.64" stroke="currentColor" strokeWidth="2" opacity="0.5" />
                   </svg>
                 </div>
               </div>

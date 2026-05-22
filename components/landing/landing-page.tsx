@@ -6,6 +6,7 @@ import { ProblemSection } from "./problem-section"
 import { SolutionSection } from "./solution-section"
 import { HowItWorksSection } from "./how-it-works-section"
 import { FeaturesSection } from "./features-section"
+import { AboutSection } from "./about-section"
 import { PricingSection } from "./pricing-section"
 import { CTASection } from "./cta-section"
 import { FooterSection } from "./footer-section"
@@ -33,6 +34,11 @@ export function LandingPage({ onNavigate }: { onNavigate: (page: string) => void
         <FeaturesSection />
       </div>
 
+      {/* About Us */}
+      <div id="about">
+        <AboutSection />
+      </div>
+
       {/* Pricing */}
       <div id="pricing">
         <PricingSection onNavigate={onNavigate} />
@@ -42,7 +48,7 @@ export function LandingPage({ onNavigate }: { onNavigate: (page: string) => void
       <CTASection onNavigate={onNavigate} />
 
       {/* Footer */}
-      <FooterSection />
+      <FooterSection onNavigate={onNavigate} />
     </div>
   )
 }

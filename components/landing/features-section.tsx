@@ -29,9 +29,14 @@ export function FeaturesSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20 mb-4">
-            Features
-          </span>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20">
+              Features
+            </span>
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30 animate-pulse">
+              Coming Soon
+            </span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-balance">
             Built for Modern Car Owners
           </h2>

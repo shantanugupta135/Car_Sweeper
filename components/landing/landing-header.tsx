@@ -1,11 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Droplets, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 const navLinks = [
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
+  { label: "About Us", href: "#about" },
   { label: "Pricing", href: "#pricing" },
 ]
 
@@ -36,10 +38,10 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-lg bg-primary/15 flex items-center justify-center">
-            <Droplets className="w-5 h-5 text-primary" />
+          <div className="w-9 h-9 rounded-lg overflow-hidden">
+            <Image src="/images/carsglow-logo.jpg" alt="CarsGlow" width={36} height={36} className="object-cover" />
           </div>
-          <span className="font-bold text-foreground text-lg">SmartCar Care</span>
+          <span className="font-bold text-foreground text-lg">CarsGlow</span>
         </button>
 
         {/* Desktop nav */}
@@ -55,16 +57,16 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
           ))}
         </nav>
 
-        {/* Desktop auth buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Desktop auth buttons - Hidden but code kept intact */}
+        <div className="hidden md:flex items-center gap-3 invisible">
           <button
-            onClick={() => onNavigate("login")}
+            onClick={() => onNavigate("phone-login")}
             className="px-5 py-2 rounded-lg text-sm font-medium text-foreground hover:bg-card transition-colors"
           >
             Log In
           </button>
           <button
-            onClick={() => onNavigate("signup")}
+            onClick={() => onNavigate("phone-login")}
             className="px-5 py-2 rounded-lg text-sm font-medium bg-primary text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,212,255,0.25)]"
           >
             Sign Up Free
@@ -90,15 +92,15 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
                 {link.label}
               </button>
             ))}
-            <div className="flex flex-col gap-2 pt-3 border-t border-border">
+            <div className="flex flex-col gap-2 pt-3 border-t border-border invisible">
               <button
-                onClick={() => { setMenuOpen(false); onNavigate("login") }}
+                onClick={() => { setMenuOpen(false); onNavigate("phone-login") }}
                 className="w-full py-2.5 rounded-lg text-sm font-medium text-foreground border border-border hover:bg-card transition-colors"
               >
                 Log In
               </button>
               <button
-                onClick={() => { setMenuOpen(false); onNavigate("signup") }}
+                onClick={() => { setMenuOpen(false); onNavigate("phone-login") }}
                 className="w-full py-2.5 rounded-lg text-sm font-medium bg-primary text-primary-foreground"
               >
                 Sign Up Free

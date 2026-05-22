@@ -2,55 +2,53 @@
 
 import { Check } from "lucide-react"
 
+const WHATSAPP_URL = "https://wa.me/919953745105"
+
 const plans = [
   {
-    name: "Starter",
-    price: "499",
-    period: "/month",
-    description: "Perfect for weekend car owners",
+    name: "Basic",
+    description: "Essential daily car care for everyday owners",
+    carTypes: [
+      { type: "Hatchback", price: "599" },
+      { type: "Sedan / Compact-SUV", price: "699" },
+      { type: "SUVs", price: "899" },
+    ],
+    period: "/30 days",
     features: [
-      "4 cleans per month (weekends)",
-      "Exterior waterless wash",
+      "Daily exterior waterless wash",
       "Dashboard wipe-down",
       "In-app tracking",
       "Service reports",
+      "Before/after photos",
     ],
     popular: false,
   },
   {
     name: "Pro",
-    price: "999",
-    period: "/month",
-    description: "Most popular for daily commuters",
+    description: "Complete care for those who want more",
+    carTypes: [
+      { type: "Hatchback", price: "899" },
+      { type: "Sedan / Compact-SUV", price: "999" },
+      { type: "SUVs", price: "1,199" },
+    ],
+    period: "/30 days",
     features: [
-      "15 cleans per month (alternate days)",
-      "Full exterior + interior clean",
+      "Everything in Basic",
+      "Full interior cleaning",
       "Tire shine & glass polish",
-      "Before/after photos",
       "Priority scheduling",
       "Dedicated crew member",
+      "24/7 priority support",
     ],
     popular: true,
-  },
-  {
-    name: "Elite",
-    price: "1,499",
-    period: "/month",
-    description: "For those who accept nothing less",
-    features: [
-      "30 cleans per month (daily)",
-      "Full detailing every session",
-      "Ceramic coating maintenance",
-      "AC vent & seat deep clean",
-      "24/7 priority support",
-      "Multi-car discount (20%)",
-      "Quarterly full detailing free",
-    ],
-    popular: false,
   },
 ]
 
 export function PricingSection({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const handleGetStarted = () => {
+    window.open(WHATSAPP_URL, "_blank")
+  }
+
   return (
     <section className="relative py-24 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,212,255,0.05),transparent_60%)]" />
@@ -68,7 +66,7 @@ export function PricingSection({ onNavigate }: { onNavigate: (page: string) => v
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, idx) => (
             <div
               key={idx}
@@ -84,13 +82,21 @@ export function PricingSection({ onNavigate }: { onNavigate: (page: string) => v
                 </span>
               )}
 
-              <h3 className="text-xl font-bold text-foreground">{plan.name}</h3>
-              <p className="text-sm text-muted-foreground mt-1">{plan.description}</p>
+              <h3 className="text-2xl font-bold text-foreground">{plan.name}</h3>
+              <p className="text-sm text-muted-foreground mt-1 mb-6">{plan.description}</p>
 
-              <div className="flex items-baseline gap-1 mt-6 mb-6">
-                <span className="text-sm text-muted-foreground">&#8377;</span>
-                <span className="text-4xl font-bold text-foreground">{plan.price}</span>
-                <span className="text-muted-foreground">{plan.period}</span>
+              {/* Car type pricing */}
+              <div className="space-y-3 mb-6 pb-6 border-b border-border">
+                {plan.carTypes.map((car, cIdx) => (
+                  <div key={cIdx} className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">{car.type}</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-sm text-muted-foreground">&#8377;</span>
+                      <span className="text-xl font-bold text-foreground">{car.price}</span>
+                      <span className="text-xs text-muted-foreground">{plan.period}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
 
               <ul className="flex flex-col gap-3 mb-8 flex-1">
@@ -103,7 +109,7 @@ export function PricingSection({ onNavigate }: { onNavigate: (page: string) => v
               </ul>
 
               <button
-                onClick={() => onNavigate("signup")}
+                onClick={handleGetStarted}
                 className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                   plan.popular
                     ? "bg-primary text-primary-foreground hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]"
