@@ -1,27 +1,27 @@
 "use client"
 
-import { Clock, Droplet, Ban, AlertTriangle } from "lucide-react"
+import { Clock, Droplet, Ban, AlertTriangle, TrendingDown } from "lucide-react"
 
 const problems = [
   {
+    icon: AlertTriangle,
+    title: "Unreliable Cleaners",
+    description: "Local cleaners disappear without notice. No background check. No accountability. Your car is at risk.",
+  },
+  {
     icon: Clock,
-    title: "Wasted Mornings",
-    description: "Spending 30+ minutes every weekend at a car wash, waiting in line under the sun.",
+    title: "No Real-Time Tracking",
+    description: "You don't know if your car is being cleaned properly. No before/after proof. Just trust and hope.",
   },
   {
     icon: Droplet,
-    title: "Water Wastage",
-    description: "Traditional washes use 150+ liters of water per session. That's 7,800 liters a year per car.",
-  },
-  {
-    icon: Ban,
     title: "Inconsistent Quality",
-    description: "Random roadside cleaners with no accountability. Scratches, missed spots, and no-shows.",
+    description: "Every cleaner uses different techniques. Scratches, swirls, and missed spots are common problems.",
   },
   {
-    icon: AlertTriangle,
-    title: "Paint Damage",
-    description: "Harsh chemicals and dirty rags silently destroying your car's finish every single wash.",
+    icon: TrendingDown,
+    title: "Hidden Costs & Haggling",
+    description: "Prices change monthly. No transparency. Constant negotiation drains your time and money.",
   },
 ]
 
@@ -33,13 +33,13 @@ export function ProblemSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-destructive/10 text-destructive border border-destructive/20 mb-4">
-            The Problem
+            The Reality
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-balance">
-            Car Care is Broken
+            Tired of Unreliable Car Cleaners?
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Every car owner faces these frustrations daily. It&apos;s time for a smarter solution.
+            Local car washers offer zero transparency, no accountability, and constant reliability issues. It's time for professional, verified, tracked car care.
           </p>
         </div>
 

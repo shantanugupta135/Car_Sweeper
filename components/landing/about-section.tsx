@@ -201,7 +201,7 @@ export function AboutSection() {
         {/* Trust message */}
         <div className="mt-16 text-center p-8 rounded-2xl bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border border-primary/20">
           <p className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
-            &ldquo;Your car is not just a vehicle. It&apos;s a part of your family.&rdquo;
+            &ldquo;Your car is not just a vehicle. It&apos;s your pride.&rdquo;
           </p>
           <p className="text-muted-foreground">
             And we treat it that way. Every single day.
