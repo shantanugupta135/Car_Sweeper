@@ -33,15 +33,15 @@ export function LandingPage({ onNavigate }: { onNavigate: (page: string) => void
       </div>
 
       {/* About Us */}
-      <div id="about">
+      {/* <div id="about">
         <AboutSection />
-      </div>
+      </div> */}
 
       {/* Real Results & Authenticity */}
       <AuthenticitySection />
 
       {/* Professional Team */}
-      <ProfessionalTeamSection />
+      {/* <ProfessionalTeamSection /> */}
 
       {/* Trust vs Local Cleaners */}
       <TrustComparisonSection />

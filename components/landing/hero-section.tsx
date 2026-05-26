@@ -51,8 +51,31 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
             </h1>
 
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg text-pretty animate-slide-in-left animation-delay-200">
-              <span className="text-foreground font-medium">Professional daily doorstep car cleaning by trained CarsGlow partners.</span>{" "}
-              Real-time tracking, verified professionals, photo proof of every wash—because your car deserves the care it needs and the trust it's earned.
+              <span className="text-foreground font-medium">
+                Professional daily doorstep car cleaning by trained CarsGlow partners.
+              </span>
+
+              <span className="mt-4 block space-y-2">
+                <span className="flex items-center gap-2">
+                  ✔ Dedicated microfiber towel for every car
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Premium cleaning kits
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Scratch-safe cleaning process
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Professional cleaning partners
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Designed to protect your car’s finish
+                </span>
+              </span>
             </p>
 
             {/* CTA buttons */}
@@ -99,7 +122,7 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
           <div className="relative flex items-center justify-center h-[500px]">
             {/* Background glow */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.15),transparent_70%)]" />
-            
+
             <div className="relative w-full h-full flex flex-col items-center justify-center">
               {/* Animated car container */}
               <div className="relative w-full h-64 flex items-center justify-center perspective">
@@ -115,7 +138,7 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                       className="rounded-2xl object-cover shadow-2xl shadow-primary/30"
                       priority
                     />
-                    
+
                     {/* Shine effect overlay */}
                     <div className="absolute inset-0 rounded-2xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shine-sweep" />
@@ -140,8 +163,8 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                   <div
                     key={i}
                     className="absolute animate-water-drip"
-                    style={{ 
-                      left: `${20 + i * 15}%`, 
+                    style={{
+                      left: `${20 + i * 15}%`,
                       top: '40px',
                       animationDelay: `${i * 0.2}s`
                     }}
@@ -155,8 +178,8 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                   <div
                     key={`bubble-${i}`}
                     className="absolute animate-bubble-float"
-                    style={{ 
-                      left: `${30 + i * 20}%`, 
+                    style={{
+                      left: `${30 + i * 20}%`,
                       top: '180px',
                       animationDelay: `${i * 0.3}s`
                     }}
@@ -203,11 +226,11 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
             {/* Floating stat cards */}
             <div className="absolute -bottom-4 -left-4 px-4 py-3 rounded-xl bg-card/80 border border-border backdrop-blur-sm animate-slide-in-left animation-delay-400">
               <p className="text-xs text-muted-foreground">Daily Cleans</p>
-              <p className="text-xl font-bold text-primary">8,500+</p>
+              <p className="text-xl font-bold text-primary">500+</p>
             </div>
             <div className="absolute -top-4 -right-4 px-4 py-3 rounded-xl bg-card/80 border border-border backdrop-blur-sm animate-slide-in-right animation-delay-400">
               <p className="text-xs text-muted-foreground">Water Saved</p>
-              <p className="text-xl font-bold text-primary">2.5M L</p>
+              <p className="text-xl font-bold text-primary">1.5M L</p>
             </div>
           </div>
         </div>

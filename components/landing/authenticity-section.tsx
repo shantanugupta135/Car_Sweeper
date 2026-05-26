@@ -37,7 +37,7 @@ export function AuthenticitySection() {
               <div className="space-y-2">
                 <div className="relative rounded-lg overflow-hidden border-2 border-muted">
                   <Image
-                    src="/images/car-cleaning-before.jpg"
+                    src="/images/car-cleaning-before.png"
                     alt="Car before cleaning"
                     width={300}
                     height={300}
@@ -52,7 +52,7 @@ export function AuthenticitySection() {
               <div className="space-y-2">
                 <div className="relative rounded-lg overflow-hidden border-2 border-primary">
                   <Image
-                    src="/images/car-cleaning-after.jpg"
+                    src="/images/car-cleaning-after.png"
                     alt="Car after cleaning"
                     width={300}
                     height={300}
@@ -170,7 +170,7 @@ export function AuthenticitySection() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid sm:grid-cols-3 gap-6 bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8">
+        {/* <div className="grid sm:grid-cols-3 gap-6 bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8">
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">100+</div>
             <p className="text-muted-foreground">Cars Cleaned Daily</p>
@@ -185,7 +185,7 @@ export function AuthenticitySection() {
             <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">4.9★</div>
             <p className="text-muted-foreground">Customer Rating</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   )
