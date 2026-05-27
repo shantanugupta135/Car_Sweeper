@@ -22,13 +22,13 @@ export function CTASection({ onNavigate }: { onNavigate: (page: string) => void 
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-bold text-foreground mb-4 text-balance">
-            First Month Free for{" "}
+            First Trial Free for{" "}
             <span className="text-primary">Early Adopters</span>
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-xl mx-auto mb-8 text-pretty">
-            Join 12,000+ car owners who already wake up to a spotless car.
-            Sign up today and your first month is completely on us.
+            Join 1,000+ car owners who already wake up to a spotless car.
+            Sign up today and your car first wash is completely on us.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -43,7 +43,7 @@ export function CTASection({ onNavigate }: { onNavigate: (page: string) => void 
           </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-border">
+          {/* <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-border">
             <div>
               <p className="text-2xl sm:text-3xl font-bold text-primary">25+</p>
               <p className="text-sm text-muted-foreground">Cities</p>
@@ -56,7 +56,7 @@ export function CTASection({ onNavigate }: { onNavigate: (page: string) => void 
               <p className="text-2xl sm:text-3xl font-bold text-primary">4.9</p>
               <p className="text-sm text-muted-foreground">App Rating</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

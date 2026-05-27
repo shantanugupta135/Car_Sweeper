@@ -113,7 +113,7 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                     <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-sm text-muted-foreground">Trusted by <span className="text-foreground font-semibold">12,000+</span> car owners</p>
+                <p className="text-sm text-muted-foreground">Trusted by <span className="text-foreground font-semibold">100+</span> car owners</p>
               </div>
             </div>
           </div>

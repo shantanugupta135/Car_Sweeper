@@ -9,12 +9,19 @@ import { AboutSection } from "./about-section"
 import { AuthenticitySection } from "./authenticity-section"
 import { ProfessionalTeamSection } from "./professional-team-section"
 import { TrustComparisonSection } from "./trust-comparison-section"
+import { PremiumCareSection } from "./premium-care-section"
+import { PartnerSection } from "./partner-section"
+import { WhyCarsglowSection } from "./why-carsglow-section"
+import { ApartmentSection } from "./apartment-section"
 import { PricingSection } from "./pricing-section"
+import { CTASection } from "./cta-section"
 import { FooterSection } from "./footer-section"
+import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button"
 
 export function LandingPage({ onNavigate }: { onNavigate: (page: string) => void }) {
   return (
     <div className="min-h-screen bg-background">
+      <FloatingWhatsAppButton />
       <LandingHeader onNavigate={onNavigate} />
 
       <HeroSection onNavigate={onNavigate} />
@@ -22,15 +29,21 @@ export function LandingPage({ onNavigate }: { onNavigate: (page: string) => void
       {/* Problem */}
       <ProblemSection />
 
+      {/* Why CarsGlow */}
+      <div id="about">
+         <WhyCarsglowSection />
+      </div>
+     
+
       {/* How it works */}
       <div id="how-it-works">
         <HowItWorksSection />
       </div>
 
       {/* Features */}
-      <div id="features">
+      {/* <div id="features">
         <FeaturesSection />
-      </div>
+      </div> */}
 
       {/* About Us */}
       {/* <div id="about">
@@ -44,12 +57,26 @@ export function LandingPage({ onNavigate }: { onNavigate: (page: string) => void
       {/* <ProfessionalTeamSection /> */}
 
       {/* Trust vs Local Cleaners */}
-      <TrustComparisonSection />
+      {/* <TrustComparisonSection /> */}
+
+      {/* Premium Care Section */}
+      <div id="features">
+        <PremiumCareSection />
+      </div>   
+
+      {/* Meet Your Partner */}
+      {/* <PartnerSection /> */}
+
+      {/* Apartment Communities */}
+      <ApartmentSection />
 
       {/* Pricing */}
       <div id="pricing">
         <PricingSection onNavigate={onNavigate} />
       </div>
+
+      {/* CTA Section */}
+      <CTASection onNavigate={onNavigate} />
 
       {/* Footer */}
       <FooterSection onNavigate={onNavigate} />
