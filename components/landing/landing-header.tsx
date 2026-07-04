@@ -38,10 +38,10 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-lg overflow-hidden">
-            <Image src="/images/carsglow-logo.jpg" alt="CarsGlow" width={36} height={36} className="object-cover" />
+          <div className="w-20 h-20 rounded-lg items-center justify-center flex">
+            <Image src="/images/carsglow-logo.png" alt="CarsGlow" width={100} height={100} className="object-cover" />
           </div>
-          <span className="font-bold text-foreground text-lg">CarsGlow</span>
+          <span className="font-bold text-foreground text-lg">CarsGlo</span>
         </button>
 
         {/* Desktop nav */}

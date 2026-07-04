@@ -10,23 +10,23 @@ export function PremiumCareSection() {
       title: "Premium Microfiber Towels",
       subtitle: "Dedicated set - never shared with other vehicles",
     },
+    // {
+    //   image: "/images/kit-cleaning-solutions.jpg",
+    //   title: "Professional Cleaning Solutions",
+    //   subtitle: "Automotive-grade products for paint protection",
+    // },
     {
-      image: "/images/kit-cleaning-solutions.jpg",
-      title: "Professional Cleaning Solutions",
-      subtitle: "Automotive-grade products for paint protection",
-    },
-    {
-      image: "/images/kit-washing-mitt.jpg",
+      image: "/images/kit-washing-mitt.jpeg",
       title: "Scratch-Safe Washing Mitt",
       subtitle: "Certified safe for all car surfaces",
     },
+    // {
+    //   image: "/images/kit-tire-polish.jpg",
+    //   title: "Premium Tire & Trim Care",
+    //   subtitle: "Showroom-ready finish in minutes",
+    // },
     {
-      image: "/images/kit-tire-polish.jpg",
-      title: "Premium Tire & Trim Care",
-      subtitle: "Showroom-ready finish in minutes",
-    },
-    {
-      image: "/images/kit-sealant.jpg",
+      image: "/images/kit-sealant.jpeg",
       title: "Paint Protective Sealant",
       subtitle: "Long-lasting protection against elements",
     },
