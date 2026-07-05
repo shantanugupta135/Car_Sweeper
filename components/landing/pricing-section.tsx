@@ -2,7 +2,7 @@
 
 import { Check } from "lucide-react"
 
-const WHATSAPP_URL = "https://wa.me/919953745105"
+const WHATSAPP_URL = "https://wa.me/9953745105?text=Hi%20CarsGlo%20team!%20I%20am%20interested%20in%20your%20car%20service%20🚗%20⚡%20I’ll%20fill%20details%20here:%20https://forms.gle/p9wKFGminZz2mmr4A"
 
 const plans = [
   {
