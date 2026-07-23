@@ -15,7 +15,7 @@ export const MOCK_CONSUMERS: Consumer[] = [
   {
     id: 'user-1',
     fullName: 'Aarav Sharma',
-    email: 'aarav@example.com',
+    email: 'aarav.sharma@example.com',
     phone: '+91 9123456789',
     societyId: 'soc-1',
     societyName: 'Green Acres Residency',
@@ -26,6 +26,67 @@ export const MOCK_CONSUMERS: Consumer[] = [
     ],
     subscriptionStatus: 'active',
     currentPlanName: 'Daily Exterior + Interior Weekly'
+  },
+  {
+    id: 'user-2',
+    fullName: 'Priya Mehta',
+    email: 'priya.mehta@example.com',
+    phone: '+91 9820123456',
+    societyId: 'soc-1',
+    societyName: 'Green Acres Residency',
+    tower: 'Tower B',
+    flatNo: 'B-105',
+    registeredVehicles: [
+      { id: 'v-2', ownerId: 'user-2', registrationNumber: 'MH 04 EQ 1928', make: 'Audi', model: 'A4', color: 'Ibis White', parkingSpot: 'B1-12', societyId: 'soc-1' },
+      { id: 'v-3', ownerId: 'user-2', registrationNumber: 'MH 02 FP 9081', make: 'Hyundai', model: 'Creta', color: 'Titan Grey', parkingSpot: 'B1-13', societyId: 'soc-1' }
+    ],
+    subscriptionStatus: 'active',
+    currentPlanName: 'Premium Daily Care (Dual Vehicle)'
+  },
+  {
+    id: 'user-3',
+    fullName: 'Rohan Gupta',
+    email: 'rohan.gupta@example.com',
+    phone: '+91 9769012345',
+    societyId: 'soc-2',
+    societyName: 'Sun City Apartments',
+    tower: 'Block 1',
+    flatNo: '102',
+    registeredVehicles: [
+      { id: 'v-4', ownerId: 'user-3', registrationNumber: 'MH 01 AB 1234', make: 'Mercedes-Benz', model: 'C-Class', color: 'Obsidian Black', parkingSpot: 'P-08', societyId: 'soc-2' }
+    ],
+    subscriptionStatus: 'paused',
+    currentPlanName: 'Daily Exterior Polish'
+  },
+  {
+    id: 'user-4',
+    fullName: 'Ananya Roy',
+    email: 'ananya.roy@example.com',
+    phone: '+91 9833445566',
+    societyId: 'soc-1',
+    societyName: 'Green Acres Residency',
+    tower: 'Tower C',
+    flatNo: 'C-301',
+    registeredVehicles: [
+      { id: 'v-5', ownerId: 'user-4', registrationNumber: 'MH 03 DR 5544', make: 'Honda', model: 'City', color: 'Radiant Red', parkingSpot: 'B3-19', societyId: 'soc-1' }
+    ],
+    subscriptionStatus: 'expired',
+    currentPlanName: 'Standard Exterior Wash'
+  },
+  {
+    id: 'user-5',
+    fullName: 'Vikramaditya Sen',
+    email: 'vikram.sen@example.com',
+    phone: '+91 9988776655',
+    societyId: 'soc-2',
+    societyName: 'Sun City Apartments',
+    tower: 'Block 2',
+    flatNo: '404',
+    registeredVehicles: [
+      { id: 'v-6', ownerId: 'user-5', registrationNumber: 'MH 02 EX 7711', make: 'Tata', model: 'Harrier', color: 'Orcus White', parkingSpot: 'P-44', societyId: 'soc-2' }
+    ],
+    subscriptionStatus: 'active',
+    currentPlanName: 'Daily Exterior + Bi-weekly Deep Clean'
   }
 ];
 
