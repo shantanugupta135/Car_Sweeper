@@ -1,6 +1,7 @@
 "use client"
 
 import { useNavigation } from "@/lib/navigation-context"
+import { useAuth } from "@/lib/auth-context"
 import { DrawerNav } from "@/components/smartcar/drawer-nav"
 import { HomeDashboard } from "@/components/screens/home-dashboard"
 import { CleaningStatusScreen } from "@/components/screens/cleaning-status"
@@ -10,6 +11,14 @@ import { ServiceHistoryScreen } from "@/components/screens/service-history"
 import { RatingScreen } from "@/components/screens/rating"
 import { ComplaintScreen } from "@/components/screens/complaint"
 import { ProfileScreen } from "@/components/screens/profile"
+
+import { AdminShell } from "@/components/admin/admin-shell"
+import { AdminOverviewScreen } from "@/components/admin/screens/admin-overview"
+import { AdminCleanersScreen } from "@/components/admin/screens/admin-cleaners"
+import { AdminSocietiesScreen } from "@/components/admin/screens/admin-societies"
+import { AdminConsumersScreen } from "@/components/admin/screens/admin-consumers"
+import { AdminDailyMonitorScreen } from "@/components/admin/screens/admin-daily-monitor"
+import { AdminComplaintsScreen } from "@/components/admin/screens/admin-complaints"
 
 const screenComponents: Record<string, React.ComponentType> = {
   home: HomeDashboard,
@@ -22,8 +31,30 @@ const screenComponents: Record<string, React.ComponentType> = {
   profile: ProfileScreen,
 }
 
+const adminScreenComponents: Record<string, React.ComponentType> = {
+  "admin-overview": AdminOverviewScreen,
+  "admin-cleaners": AdminCleanersScreen,
+  "admin-societies": AdminSocietiesScreen,
+  "admin-consumers": AdminConsumersScreen,
+  "admin-daily-monitor": AdminDailyMonitorScreen,
+  "admin-complaints": AdminComplaintsScreen,
+}
+
 export function AppShell() {
   const { screen } = useNavigation()
+  const { role } = useAuth()
+
+  const isAdminRoute = screen.startsWith("admin-") || role === "admin"
+
+  if (isAdminRoute) {
+    const AdminScreenComponent = adminScreenComponents[screen] || AdminOverviewScreen
+    return (
+      <AdminShell>
+        <AdminScreenComponent />
+      </AdminShell>
+    )
+  }
+
   const ScreenComponent = screenComponents[screen] || HomeDashboard
 
   return (
@@ -44,3 +75,4 @@ export function AppShell() {
     </div>
   )
 }
+
