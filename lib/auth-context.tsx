@@ -32,8 +32,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false)
 
   const setRole = useCallback((newRole: UserRole) => {
-    setRoleState(newRole)
-    setUser((prev) => (prev ? { ...prev, role: newRole } : null))
+    setRoleState((prev) => (prev === newRole ? prev : newRole))
+    setUser((prev) => (prev && prev.role !== newRole ? { ...prev, role: newRole } : prev))
   }, [])
 
   const login = useCallback(async (email: string, password: string) => {
