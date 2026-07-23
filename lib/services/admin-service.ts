@@ -14,6 +14,26 @@ export class AdminService {
   async getDailyJobs(): Promise<DailyCleanJob[]> { return this.jobs; }
   async getComplaints(): Promise<Complaint[]> { return this.complaints; }
 
+  async updateJobStatus(
+    jobId: string,
+    status: DailyCleanJob['status'],
+    rating?: number
+  ): Promise<DailyCleanJob> {
+    const index = this.jobs.findIndex((j) => j.id === jobId);
+    if (index !== -1) {
+      this.jobs[index] = {
+        ...this.jobs[index],
+        status,
+        ...(rating !== undefined ? { rating } : {}),
+        ...(status === 'completed' && !this.jobs[index].completedAt
+          ? { completedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }
+          : {})
+      };
+      return this.jobs[index];
+    }
+    throw new Error(`Job with ID ${jobId} not found`);
+  }
+
   async addCleaner(cleanerData: Omit<Cleaner, 'id' | 'completedToday' | 'totalAssignedToday' | 'rating' | 'joinedDate'>): Promise<Cleaner> {
     const newCleaner: Cleaner = {
       ...cleanerData,
