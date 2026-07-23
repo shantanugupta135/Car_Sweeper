@@ -14,6 +14,21 @@ export class AdminService {
   async getDailyJobs(): Promise<DailyCleanJob[]> { return this.jobs; }
   async getComplaints(): Promise<Complaint[]> { return this.complaints; }
 
+  async updateComplaintStatus(
+    complaintId: string,
+    status: Complaint['status']
+  ): Promise<Complaint> {
+    const index = this.complaints.findIndex((c) => c.id === complaintId);
+    if (index !== -1) {
+      this.complaints[index] = {
+        ...this.complaints[index],
+        status,
+      };
+      return this.complaints[index];
+    }
+    throw new Error(`Complaint with ID ${complaintId} not found`);
+  }
+
   async updateJobStatus(
     jobId: string,
     status: DailyCleanJob['status'],

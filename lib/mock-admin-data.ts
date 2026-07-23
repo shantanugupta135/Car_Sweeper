@@ -197,5 +197,59 @@ export const MOCK_JOBS: DailyCleanJob[] = [
 ];
 
 export const MOCK_COMPLAINTS: Complaint[] = [
-  { id: 'cmp-1', jobId: 'job-99', consumerId: 'user-2', consumerName: 'Rohan Gupta', vehicleReg: 'MH 01 AB 1234', cleanerName: 'Suresh Patil', issueType: 'poor_quality', status: 'open', description: 'Dust left on windshield after wash.', photoUrls: ['https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400'], createdAt: '2026-07-23 08:30 AM' }
+  {
+    id: 'cmp-1',
+    jobId: 'job-6',
+    consumerId: 'user-3',
+    consumerName: 'Rohan Gupta',
+    vehicleReg: 'MH 01 AB 1234',
+    cleanerName: 'Suresh Patil',
+    issueType: 'poor_quality',
+    status: 'open',
+    description: 'Dust and water spots left on windshield and rear glass after morning wash.',
+    photoUrls: ['https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&auto=format&fit=crop&q=80'],
+    createdAt: '2026-07-23 08:30 AM'
+  },
+  {
+    id: 'cmp-2',
+    jobId: 'job-1',
+    consumerId: 'user-1',
+    consumerName: 'Aarav Sharma',
+    vehicleReg: 'MH 02 CZ 4821',
+    cleanerName: 'Ramesh Kumar',
+    issueType: 'missed_wash',
+    status: 'in_review',
+    description: 'Vehicle was parked in bay B2-45 but cleaner marked job skipped due to gate access.',
+    photoUrls: ['https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=600&auto=format&fit=crop&q=80'],
+    createdAt: '2026-07-23 07:15 AM'
+  },
+  {
+    id: 'cmp-3',
+    jobId: 'job-2',
+    consumerId: 'user-2',
+    consumerName: 'Priya Mehta',
+    vehicleReg: 'MH 04 EQ 1928',
+    cleanerName: 'Ramesh Kumar',
+    issueType: 'scratch_or_damage',
+    status: 'open',
+    description: 'Noticed a minor hairline mark near the left side mirror post-cleaning.',
+    photoUrls: [
+      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&auto=format&fit=crop&q=80'
+    ],
+    createdAt: '2026-07-23 09:10 AM'
+  },
+  {
+    id: 'cmp-4',
+    jobId: 'job-5',
+    consumerId: 'user-4',
+    consumerName: 'Ananya Roy',
+    vehicleReg: 'MH 03 DR 5544',
+    cleanerName: 'Suresh Patil',
+    issueType: 'other',
+    status: 'resolved',
+    description: 'Water drips around boot latch area. Issue resolved with instant re-wipe.',
+    photoUrls: ['https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=600&auto=format&fit=crop&q=80'],
+    createdAt: '2026-07-22 06:45 PM'
+  }
 ];
