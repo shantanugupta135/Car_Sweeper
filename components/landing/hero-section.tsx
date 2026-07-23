@@ -1,0 +1,240 @@
+"use client"
+
+import Image from "next/image"
+import { Droplets, ArrowRight, Star } from "lucide-react"
+
+const WHATSAPP_URL = "https://wa.me/919953745105"
+
+export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const handleBookPremium = () => {
+    window.open(WHATSAPP_URL, "_blank")
+  }
+
+  const handleWatchHow = () => {
+    const element = document.getElementById("how-it-works")
+    element?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background gradient layers */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(46,158,68,0.08),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(46,158,68,0.05),transparent_60%)]" />
+
+      {/* Floating particles */}
+      <div className="absolute top-1/4 left-1/4 w-1 h-1 rounded-full bg-primary/40 animate-pulse" />
+      <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 rounded-full bg-primary/30 animate-pulse delay-700" />
+      <div className="absolute bottom-1/3 left-1/3 w-1 h-1 rounded-full bg-primary/20 animate-pulse delay-1000" />
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left content */}
+          <div className="flex flex-col gap-8">
+            {/* Catchy tagline */}
+            <div className="space-y-2 animate-slide-in-left">
+              <p className="text-primary font-semibold text-sm tracking-wide uppercase">
+                Trust. Transparency. Care.
+              </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 hover:shadow-lg hover:shadow-primary/10 transition-all">
+                <Droplets className="w-4 h-4 text-primary animate-bounce-subtle" />
+                <span className="text-sm font-medium text-primary">Professional care you can monitor</span>
+              </div>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground text-balance animate-slide-in-left animation-delay-100">
+              Because Your Car{" "}
+              <span className="text-primary relative inline-block">
+                Is Family
+                <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-transparent animate-gradient-flow" />
+              </span>
+            </h1>
+
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg text-pretty animate-slide-in-left animation-delay-200">
+              <span className="text-foreground font-medium">
+                Professional daily doorstep car cleaning by trained CarsGlow partners.
+              </span>
+
+              <span className="mt-4 block space-y-2">
+                <span className="flex items-center gap-2">
+                  ✔ Dedicated microfiber towel for every car
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Premium cleaning kits
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Scratch-safe cleaning process
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Professional cleaning partners
+                </span>
+
+                <span className="flex items-center gap-2">
+                  ✔ Designed to protect your car’s finish
+                </span>
+              </span>
+            </p>
+
+            {/* CTA buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-left animation-delay-300">
+              <button
+                onClick={handleBookPremium}
+                className="group relative flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-primary/80 text-primary-foreground font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary/40 active:scale-95 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">Book Premium Care</span>
+                <ArrowRight className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </button>
+              {/* Watch How It Works button */}
+              <button
+                onClick={handleWatchHow}
+                className="flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-border bg-card/50 text-foreground font-semibold text-lg transition-all duration-300 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 active:scale-95"
+              >
+                Watch How It Works
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Social proof */}
+            <div className="flex items-center gap-6 pt-4">
+              <div className="flex -space-x-3">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="w-10 h-10 rounded-full border-2 border-background bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">
+                    {String.fromCharCode(64 + i)}
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-sm text-muted-foreground">Trusted by <span className="text-foreground font-semibold">100+</span> car owners</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right - Animated Car Washing Scene */}
+          <div className="relative flex items-center justify-center h-[500px]">
+            {/* Background glow */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,158,68,0.15),transparent_70%)]" />
+
+            <div className="relative w-full h-full flex flex-col items-center justify-center">
+              {/* Animated car container */}
+              <div className="relative w-full h-64 flex items-center justify-center perspective">
+                {/* Car with shine effect */}
+                <div className="relative animate-car-bounce">
+                  <div className="animate-car-drive">
+                    {/* Car image */}
+                    <Image
+                      src="/images/hero-car-washing.jpg"
+                      alt="Car being washed"
+                      width={400}
+                      height={280}
+                      className="rounded-2xl object-cover shadow-2xl shadow-primary/30"
+                      priority
+                    />
+
+                    {/* Shine effect overlay */}
+                    <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shine-sweep" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Animated sweeper brush */}
+                <div className="absolute right-12 top-20 animate-sweeper-swing origin-bottom">
+                  {/* Brush handle */}
+                  <div className="w-1 h-20 bg-gradient-to-b from-gray-400 to-gray-600 rounded-full mx-auto" />
+                  {/* Brush head */}
+                  <svg className="w-16 h-12 -mx-6" viewBox="0 0 100 80" fill="none">
+                    <ellipse cx="50" cy="20" rx="35" ry="15" fill="rgba(46,158,68,0.8)" />
+                    <path d="M 20 20 Q 20 35 50 50 Q 80 35 80 20" fill="rgba(46,158,68,0.6)" />
+                    <path d="M 30 25 Q 30 32 50 42 Q 70 32 70 25" fill="rgba(126,211,127,0.7)" stroke="rgba(126,211,127,0.9)" strokeWidth="1" />
+                  </svg>
+                </div>
+
+                {/* Water droplets */}
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className="absolute animate-water-drip"
+                    style={{
+                      left: `${20 + i * 15}%`,
+                      top: '40px',
+                      animationDelay: `${i * 0.2}s`
+                    }}
+                  >
+                    <div className="w-2 h-2 bg-accent rounded-full opacity-70 blur-sm" />
+                  </div>
+                ))}
+
+                {/* Soap bubbles */}
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={`bubble-${i}`}
+                    className="absolute animate-bubble-float"
+                    style={{
+                      left: `${30 + i * 20}%`,
+                      top: '180px',
+                      animationDelay: `${i * 0.3}s`
+                    }}
+                  >
+                    <div className="w-3 h-3 border border-accent/50 rounded-full" />
+                  </div>
+                ))}
+
+                {/* Spray effect */}
+                <div className="absolute left-0 top-1/2 w-20 h-20 pointer-events-none">
+                  <svg className="w-full h-full text-accent/40" viewBox="0 0 100 100" fill="none">
+                    <line x1="50" y1="50" x2="90" y2="50" stroke="currentColor" strokeWidth="2" opacity="0.5" />
+                    <line x1="50" y1="50" x2="25" y2="15.36" stroke="currentColor" strokeWidth="2" opacity="0.5" />
+                    <line x1="50" y1="50" x2="25" y2="84.64" stroke="currentColor" strokeWidth="2" opacity="0.5" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Service indicators below car */}
+              <div className="mt-8 flex gap-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                    <Droplets className="w-6 h-6 text-primary animate-bounce-subtle" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">Zero Water</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                    <svg className="w-6 h-6 text-primary animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Quick Clean</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                    <Star className="w-6 h-6 text-primary fill-primary animate-bounce-subtle" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">Shiny Finish</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating stat cards */}
+            <div className="absolute -bottom-4 -left-4 px-4 py-3 rounded-xl bg-card/80 border border-border backdrop-blur-sm animate-slide-in-left animation-delay-400">
+              <p className="text-xs text-muted-foreground">Daily Cleans</p>
+              <p className="text-xl font-bold text-primary">500+</p>
+            </div>
+            <div className="absolute -top-4 -right-4 px-4 py-3 rounded-xl bg-card/80 border border-border backdrop-blur-sm animate-slide-in-right animation-delay-400">
+              <p className="text-xs text-muted-foreground">Water Saved</p>
+              <p className="text-xl font-bold text-primary">1.5M L</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
