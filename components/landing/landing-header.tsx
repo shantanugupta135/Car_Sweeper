@@ -57,19 +57,13 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
           ))}
         </nav>
 
-        {/* Desktop auth buttons - Hidden but code kept intact */}
+        {/* Desktop auth buttons - Hidden */}
         <div className="hidden md:flex items-center gap-3 invisible">
           <button
-            onClick={() => onNavigate("phone-login")}
+            onClick={() => onNavigate("login")}
             className="px-5 py-2 rounded-lg text-sm font-medium text-foreground hover:bg-card transition-colors"
           >
             Log In
-          </button>
-          <button
-            onClick={() => onNavigate("phone-login")}
-            className="px-5 py-2 rounded-lg text-sm font-medium bg-primary text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(46,158,68,0.25)]"
-          >
-            Sign Up Free
           </button>
         </div>
 
@@ -92,18 +86,12 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
                 {link.label}
               </button>
             ))}
-            <div className="flex flex-col gap-2 pt-3 border-t border-border invisible">
+            <div className="flex flex-col gap-2 pt-3 border-t border-border">
               <button
-                onClick={() => { setMenuOpen(false); onNavigate("phone-login") }}
-                className="w-full py-2.5 rounded-lg text-sm font-medium text-foreground border border-border hover:bg-card transition-colors"
+                onClick={() => { setMenuOpen(false); onNavigate("login") }}
+                className="w-full py-2.5 rounded-lg text-sm font-semibold border border-primary/40 text-primary hover:bg-primary/10 transition-colors flex items-center justify-center gap-2"
               >
-                Log In
-              </button>
-              <button
-                onClick={() => { setMenuOpen(false); onNavigate("phone-login") }}
-                className="w-full py-2.5 rounded-lg text-sm font-medium bg-primary text-primary-foreground"
-              >
-                Sign Up Free
+                🛡️ Admin Login
               </button>
             </div>
           </div>
