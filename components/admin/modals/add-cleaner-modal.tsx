@@ -126,7 +126,9 @@ export function AddCleanerModal({ isOpen, onClose, onCleanerAdded }: AddCleanerM
       resetForm()
       onClose()
     } catch (err) {
-      setErrorMsg("Failed to add cleaner. Please try again.")
+      // Surface the real reason — "number already belongs to a subscriber",
+      // "society no longer exists", etc. are all actionable for the operator.
+      setErrorMsg(err instanceof Error ? err.message : "Failed to add cleaner. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
@@ -298,12 +300,25 @@ export function AddCleanerModal({ isOpen, onClose, onCleanerAdded }: AddCleanerM
             </div>
           )}
 
-          {/* Credential Generator Section */}
+          {/* How the cleaner actually signs in */}
+          <div className="p-4 rounded-xl bg-[#101711] border border-[#1E2C21] space-y-1.5">
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4 text-[#7ED37F]" />
+              <span className="text-xs font-bold text-[#E2F0E4]">Mobile app sign-in</span>
+            </div>
+            <p className="text-[11px] leading-relaxed text-[#7C8C7E]">
+              Saving this form creates the cleaner&apos;s CarsGlow account against the phone number above. They sign in
+              on the mobile app with that <span className="text-[#C8D9CB] font-medium">same number and a one-time SMS
+              code</span> — no password to share. The app recognises the role and opens the cleaner task list directly.
+            </p>
+          </div>
+
+          {/* Internal staff reference PIN */}
           <div className="p-4 rounded-xl bg-gradient-to-br from-[#121E14] to-[#18261B] border border-[#2E9E44]/30 space-y-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <KeyRound className="w-4 h-4 text-[#7ED37F]" />
-                <span className="text-xs font-bold text-[#E2F0E4]">Mobile Access PIN</span>
+                <span className="text-xs font-bold text-[#E2F0E4]">Staff Reference PIN</span>
               </div>
               <button
                 type="button"
@@ -342,7 +357,8 @@ export function AddCleanerModal({ isOpen, onClose, onCleanerAdded }: AddCleanerM
               </button>
             </div>
             <p className="text-[11px] text-[#7C8C7E]">
-              Cleaner will use this PIN along with their phone number to log in via the Mobile Cleaner App.
+              Internal reference only — used by society security desks and supervisors to identify the cleaner on site.
+              It is not the mobile app login.
             </p>
           </div>
 

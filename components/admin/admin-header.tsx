@@ -1,19 +1,22 @@
 "use client"
 
-import { Search, Plus, Shield, Car, Sparkles } from "lucide-react"
-import { useAuth, UserRole } from "@/lib/auth-context"
-import { useNavigation, Screen } from "@/lib/navigation-context"
+import { Plus, Shield, LogOut } from "lucide-react"
+import { useAuth } from "@/lib/auth-context"
+import { useNavigation } from "@/lib/navigation-context"
+import { AdminGlobalSearch } from "@/components/admin/admin-global-search"
+import { IS_REAL_MODE } from "@/lib/config"
 
 export function AdminHeader() {
-  const { role, setRole } = useAuth()
+  const { user, logout } = useAuth()
   const { navigate } = useNavigation()
 
-  const handleRoleChange = (newRole: UserRole) => {
-    setRole(newRole)
-    if (newRole === "owner" || newRole === "cleaner") {
-      navigate("home")
-    }
-  }
+  const initials = (user?.name ?? "Admin")
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase()
 
   return (
     <header className="sticky top-0 z-40 w-full h-16 bg-[#0B0F12]/90 backdrop-blur-xl border-b border-[#1E2C21] px-4 md:px-6 flex items-center justify-between gap-4">
@@ -35,74 +38,36 @@ export function AdminHeader() {
         </div>
       </div>
 
-      {/* Global Search Bar */}
-      <div className="flex-1 max-w-md hidden md:block">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#7C8C7E]" />
-          <input
-            type="text"
-            placeholder="Search cleaners, societies, consumers, vehicles..."
-            className="w-full h-9 pl-9 pr-4 rounded-lg bg-[#182019]/80 border border-[#1E2C21] text-xs text-[#E2F0E4] placeholder-[#7C8C7E] focus:outline-none focus:border-[#2E9E44] focus:ring-1 focus:ring-[#2E9E44] transition-all"
-          />
-        </div>
-      </div>
+      <AdminGlobalSearch />
 
-      {/* Right Controls: Quick Role Switcher + Quick Action */}
+      {/* Right Controls: signed-in admin + quick action */}
       <div className="flex items-center gap-3 shrink-0">
-        {/* Quick Role Switcher */}
-        <div className="flex items-center p-1 rounded-xl bg-[#182019] border border-[#1E2C21]">
-          <button
-            type="button"
-            onClick={() => handleRoleChange("owner")}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-              role === "owner"
-                ? "bg-[#2E9E44] text-white shadow-md shadow-[#2E9E44]/30"
-                : "text-[#7C8C7E] hover:text-[#E2F0E4] hover:bg-[#1E2C21]/50"
-            }`}
-            title="Switch to Consumer view"
+        {!IS_REAL_MODE && (
+          <span
+            className="hidden lg:inline text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded bg-[#F4A300]/15 text-[#F4A300] border border-[#F4A300]/30"
+            title="NEXT_PUBLIC_API_MODE is not set to 'real' — showing seed data"
           >
-            <Car className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Consumer</span>
-          </button>
+            Mock data
+          </span>
+        )}
 
+        <div className="flex items-center gap-2 pl-1 pr-2 py-1 rounded-xl bg-[#182019] border border-[#1E2C21]">
+          <span className="w-7 h-7 rounded-lg bg-[#2E9E44]/20 border border-[#2E9E44]/40 text-[11px] font-bold text-[#7ED37F] flex items-center justify-center">
+            {initials}
+          </span>
+          <span className="hidden sm:flex flex-col leading-tight">
+            <span className="text-[11px] font-semibold text-[#E2F0E4]">{user?.name ?? "Admin"}</span>
+            <span className="text-[10px] text-[#7C8C7E]">{user?.email ?? "operations"}</span>
+          </span>
           <button
             type="button"
-            onClick={() => handleRoleChange("cleaner")}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-              role === "cleaner"
-                ? "bg-[#2E9E44] text-white shadow-md shadow-[#2E9E44]/30"
-                : "text-[#7C8C7E] hover:text-[#E2F0E4] hover:bg-[#1E2C21]/50"
-            }`}
-            title="Switch to Cleaner view"
+            onClick={logout}
+            title="Sign out"
+            className="ml-1 p-1.5 rounded-lg text-[#7C8C7E] hover:text-[#E5484D] hover:bg-[#E5484D]/10 transition-colors"
           >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Cleaner</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleRoleChange("admin")}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-              role === "admin"
-                ? "bg-[#2E9E44] text-white shadow-md shadow-[#2E9E44]/30"
-                : "text-[#7C8C7E] hover:text-[#E2F0E4] hover:bg-[#1E2C21]/50"
-            }`}
-            title="Switch to Admin view"
-          >
-            <Shield className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Admin</span>
+            <LogOut className="w-3.5 h-3.5" />
           </button>
         </div>
-
-        {/* Quick Action Button: + Add Cleaner */}
-        <button
-          type="button"
-          onClick={() => navigate("admin-cleaners")}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#2E9E44] to-[#166534] hover:from-[#35b54e] hover:to-[#1e7e40] text-white text-xs font-semibold shadow-lg shadow-[#2E9E44]/20 border border-[#7ED37F]/30 transition-all cursor-pointer"
-        >
-          <Plus className="w-4 h-4" />
-          <span className="hidden sm:inline">Add Cleaner</span>
-        </button>
       </div>
     </header>
   )

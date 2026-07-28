@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { GlassCard } from "@/components/smartcar/glass-card"
-import { adminService } from "@/lib/services/admin-service"
+import { adminService, type OverviewStats } from "@/lib/services/admin-service"
 import { Society, Cleaner, Consumer, DailyCleanJob, Complaint } from "@/lib/types/api"
 import { useNavigation } from "@/lib/navigation-context"
 import {
@@ -30,22 +30,25 @@ export function AdminOverviewScreen() {
   const [consumers, setConsumers] = useState<Consumer[]>([])
   const [jobs, setJobs] = useState<DailyCleanJob[]>([])
   const [complaints, setComplaints] = useState<Complaint[]>([])
+  const [stats, setStats] = useState<OverviewStats | null>(null)
 
   useEffect(() => {
     async function loadData() {
       try {
-        const [socs, clns, cons, jbs, cmps] = await Promise.all([
+        const [socs, clns, cons, jbs, cmps, ovw] = await Promise.all([
           adminService.getSocieties(),
           adminService.getCleaners(),
           adminService.getConsumers(),
           adminService.getDailyJobs(),
           adminService.getComplaints(),
+          adminService.getOverviewStats(),
         ])
         setSocieties(socs)
         setCleaners(clns)
         setConsumers(cons)
         setJobs(jbs)
         setComplaints(cmps)
+        setStats(ovw)
       } catch (err) {
         console.error("Failed loading admin overview data", err)
       } finally {
@@ -78,19 +81,20 @@ export function AdminOverviewScreen() {
     (c) => c.status === "open" || c.status === "in_review"
   ).length
 
-  // Revenue calculation formatted
-  const mrrFormatted = "₹1,48,500"
+  // Monthly recurring revenue, summed from active subscriptions by the API.
+  const mrrFormatted = stats ? `₹${stats.mrrInr.toLocaleString("en-IN")}` : "—"
 
-  // 7-day trend mock breakdown
-  const completionTrend = [
-    { day: "Thu", rate: 92, label: "Jul 17" },
-    { day: "Fri", rate: 95, label: "Jul 18" },
-    { day: "Sat", rate: 89, label: "Jul 19" },
-    { day: "Sun", rate: 91, label: "Jul 20" },
-    { day: "Mon", rate: 96, label: "Jul 21" },
-    { day: "Tue", rate: 94, label: "Jul 22" },
-    { day: "Today", rate: completionRate, label: "Jul 23", isToday: true },
-  ]
+  // Last 7 days of completion rate; today's bar reflects the live roster.
+  const completionTrend = (stats?.completionTrend ?? []).map((entry, index, all) =>
+    index === all.length - 1
+      ? { ...entry, day: "Today", rate: completionRate, isToday: true }
+      : { ...entry, isToday: false }
+  )
+
+  const weeklyAverage =
+    completionTrend.length > 0
+      ? (completionTrend.reduce((sum, e) => sum + e.rate, 0) / completionTrend.length).toFixed(1)
+      : "0.0"
 
   // Recent operational activity items
   const recentActivities = [
@@ -302,7 +306,7 @@ export function AdminOverviewScreen() {
               </div>
             </div>
             <span className="text-xs font-semibold text-[#7ED37F] bg-[#2E9E44]/20 px-2.5 py-1 rounded-full border border-[#2E9E44]/30">
-              Avg 93.8%
+              Avg {weeklyAverage}%
             </span>
           </div>
 

@@ -72,11 +72,22 @@ export function AdminComplaintsScreen() {
     action: "rewash" | "credit" | "resolve",
     newStatus: Complaint["status"]
   ) => {
+    // The note is written onto the complaint and, when the status reaches
+    // `resolved`, the database trigger appends it to the notification the
+    // subscriber receives in the mobile app — so word it for them.
+    const RESOLUTION_NOTES: Record<typeof action, string> = {
+      rewash: "A priority re-wash has been scheduled for your vehicle.",
+      credit: "A ₹150 credit has been added to your account.",
+      resolve: "Our operations team has reviewed and closed this issue.",
+    }
+
     try {
-      await adminService.updateComplaintStatus(complaintId, newStatus)
-      setComplaints((prev) =>
-        prev.map((c) => (c.id === complaintId ? { ...c, status: newStatus } : c))
+      const updated = await adminService.updateComplaintStatus(
+        complaintId,
+        newStatus,
+        RESOLUTION_NOTES[action]
       )
+      setComplaints((prev) => prev.map((c) => (c.id === complaintId ? updated : c)))
 
       if (action === "rewash") {
         showToast("Priority Re-wash triggered & dispatched to cleaner!", "info")
@@ -89,7 +100,7 @@ export function AdminComplaintsScreen() {
       setIsModalOpen(false)
       setSelectedComplaint(null)
     } catch (err) {
-      console.error("Failed to resolve complaint", err)
+      showToast(err instanceof Error ? err.message : "Could not update the complaint", "warning")
     }
   }
 
