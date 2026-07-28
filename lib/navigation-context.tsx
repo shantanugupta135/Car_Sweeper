@@ -27,8 +27,15 @@ interface NavigationContextType {
 
 const NavigationContext = createContext<NavigationContextType | null>(null)
 
-export function NavigationProvider({ children }: { children: ReactNode }) {
-  const [screenHistory, setScreenHistory] = useState<Screen[]>(["admin-overview"])
+export function NavigationProvider({
+  children,
+  initialScreen = "home",
+}: {
+  children: ReactNode
+  /** `/` starts on the subscriber dashboard; `/admin` passes "admin-overview". */
+  initialScreen?: Screen
+}) {
+  const [screenHistory, setScreenHistory] = useState<Screen[]>([initialScreen])
 
   const screen = screenHistory[screenHistory.length - 1]
 

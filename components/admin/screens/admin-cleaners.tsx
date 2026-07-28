@@ -23,6 +23,7 @@ import {
 import { adminService } from "@/lib/services/admin-service"
 import { Cleaner } from "@/lib/types/api"
 import { AddCleanerModal } from "../modals/add-cleaner-modal"
+import { EditCleanerModal } from "../modals/edit-cleaner-modal"
 
 export function AdminCleanersScreen() {
   const [cleaners, setCleaners] = useState<Cleaner[]>([])
@@ -32,6 +33,7 @@ export function AdminCleanersScreen() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
   const [copiedPinId, setCopiedPinId] = useState<string | null>(null)
   const [toastMessage, setToastMessage] = useState<string | null>(null)
+  const [editingCleaner, setEditingCleaner] = useState<Cleaner | null>(null)
 
   // Load cleaner roster
   const loadCleaners = async () => {
@@ -59,6 +61,31 @@ export function AdminCleanersScreen() {
   const showToast = (msg: string) => {
     setToastMessage(msg)
     setTimeout(() => setToastMessage(null), 4000)
+  }
+
+  const applyCleaner = (updated: Cleaner) => {
+    setCleaners((prev) => prev.map((c) => (c.id === updated.id ? updated : c)))
+  }
+
+  const handleCleanerUpdated = (updated: Cleaner) => {
+    applyCleaner(updated)
+    showToast(`Saved changes for ${updated.fullName}`)
+  }
+
+  /** Quick duty toggle — an inactive cleaner is skipped when the roster is built. */
+  const handleToggleStatus = async (cleaner: Cleaner) => {
+    const nextStatus = cleaner.status === "active" ? "on_leave" : "active"
+    try {
+      const updated = await adminService.updateCleaner(cleaner.id, { status: nextStatus })
+      applyCleaner(updated)
+      showToast(
+        nextStatus === "active"
+          ? `${cleaner.fullName} is back on active duty`
+          : `${cleaner.fullName} marked on leave — new jobs will route elsewhere`
+      )
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : "Could not update the cleaner")
+    }
   }
 
   const handleCopyPin = (pin: string, id: string) => {
@@ -121,7 +148,7 @@ export function AdminCleanersScreen() {
           className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#2E9E44] to-[#166534] hover:from-[#35b54e] hover:to-[#1e7e40] text-white text-xs font-bold shadow-lg shadow-[#2E9E44]/20 border border-[#7ED37F]/30 transition-all cursor-pointer shrink-0"
         >
           <Plus className="w-4 h-4" />
-          <span>+ Add New Cleaner</span>
+          <span>Add New Cleaner</span>
         </button>
       </div>
 
@@ -377,20 +404,21 @@ export function AdminCleanersScreen() {
                         <div className="flex items-center justify-end gap-2">
                           <button
                             type="button"
-                            onClick={() =>
-                              showToast(`Reassign modal triggered for ${cleaner.fullName}`)
-                            }
+                            onClick={() => handleToggleStatus(cleaner)}
                             className="px-2.5 py-1.5 rounded-lg bg-[#141B15] border border-[#1E2C21] hover:border-[#2E9E44]/50 text-[#7C8C7E] hover:text-[#E2F0E4] text-[11px] font-medium transition-all"
+                            title={
+                              cleaner.status === "active"
+                                ? "Put on leave — today's unassigned work routes to other cleaners"
+                                : "Return to active duty"
+                            }
                           >
-                            Reassign
+                            {cleaner.status === "active" ? "Put on Leave" : "Set Active"}
                           </button>
                           <button
                             type="button"
-                            onClick={() =>
-                              showToast(`Edit cleaner triggered for ${cleaner.fullName}`)
-                            }
+                            onClick={() => setEditingCleaner(cleaner)}
                             className="p-1.5 rounded-lg bg-[#141B15] border border-[#1E2C21] hover:border-[#2E9E44]/50 text-[#7C8C7E] hover:text-white transition-all"
-                            title="Edit Cleaner Details"
+                            title="Edit coverage, capacity and status"
                           >
                             <Edit2 className="w-3.5 h-3.5" />
                           </button>
@@ -410,6 +438,13 @@ export function AdminCleanersScreen() {
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         onCleanerAdded={handleCleanerAdded}
+      />
+
+      {/* Edit Cleaner Modal */}
+      <EditCleanerModal
+        cleaner={editingCleaner}
+        onClose={() => setEditingCleaner(null)}
+        onCleanerUpdated={handleCleanerUpdated}
       />
     </div>
   )

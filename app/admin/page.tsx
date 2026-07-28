@@ -1,33 +1,29 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { AuthProvider, useAuth } from "@/lib/auth-context"
 import { NavigationProvider, useNavigation } from "@/lib/navigation-context"
 import { AppShell } from "@/components/smartcar/app-shell"
+import { AdminLogin } from "@/components/admin/admin-login"
 import { FloatingWhatsAppButton } from "@/components/floating-whatsapp-button"
 
 function AdminGate() {
-  const { isAuthenticated, login, setRole } = useAuth()
+  const { isAuthenticated, isLoading, role, setRole } = useAuth()
   const { navigate } = useNavigation()
-  const [ready, setReady] = useState(false)
-  const initialized = useRef(false)
+  const landed = useRef(false)
 
+  // Once signed in, park on the overview exactly once so the sidebar can
+  // navigate freely afterwards.
   useEffect(() => {
-    if (initialized.current) return
-    initialized.current = true
-
-    async function initAdminSession() {
-      if (!isAuthenticated) {
-        await login("admin@carsglow.com", "admin123")
-      }
+    if (isAuthenticated && role === "admin" && !landed.current) {
+      landed.current = true
       setRole("admin")
       navigate("admin-overview")
-      setReady(true)
     }
-    initAdminSession()
-  }, [isAuthenticated, login, setRole, navigate])
+    if (!isAuthenticated) landed.current = false
+  }, [isAuthenticated, role, navigate, setRole])
 
-  if (!ready) {
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-[#0B0F12] flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
@@ -38,13 +34,17 @@ function AdminGate() {
     )
   }
 
+  if (!isAuthenticated || role !== "admin") {
+    return <AdminLogin />
+  }
+
   return <AppShell />
 }
 
 export default function AdminPage() {
   return (
     <AuthProvider>
-      <NavigationProvider>
+      <NavigationProvider initialScreen="admin-overview">
         <AdminGate />
         <FloatingWhatsAppButton />
       </NavigationProvider>

@@ -13,6 +13,7 @@ import {
   AlertTriangle,
   Search,
   RefreshCw,
+  CalendarPlus,
   Camera,
   User,
   MapPin,
@@ -30,6 +31,7 @@ export function AdminDailyMonitorScreen() {
   const [jobs, setJobs] = useState<DailyCleanJob[]>([])
   const [loading, setLoading] = useState(true)
   const [refreshing, setRefreshing] = useState(false)
+  const [generating, setGenerating] = useState(false)
   const [activeTab, setActiveTab] = useState<FilterTab>("all")
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -59,6 +61,29 @@ export function AdminDailyMonitorScreen() {
   const handleRefresh = () => {
     setRefreshing(true)
     fetchJobs()
+  }
+
+  /**
+   * Builds the day's roster: one job per vehicle with an active subscription
+   * that is not paused, assigned to a cleaner covering that tower. This is what
+   * puts work into the cleaners' task lists in the mobile app.
+   */
+  const handleGenerateRoster = async () => {
+    setGenerating(true)
+    try {
+      const result = await adminService.generateDailyJobs()
+      setJobs(result.jobs)
+      showToast(
+        result.created > 0
+          ? `${result.created} wash${result.created === 1 ? "" : "es"} scheduled and assigned`
+          : "Every eligible vehicle is already scheduled for today",
+        result.created > 0 ? "success" : "warning"
+      )
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : "Could not build the roster", "warning")
+    } finally {
+      setGenerating(false)
+    }
   }
 
   // Handle audit modal approval
@@ -175,14 +200,26 @@ export function AdminDailyMonitorScreen() {
           </p>
         </div>
 
-        <button
-          onClick={handleRefresh}
-          disabled={refreshing}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-[var(--glass-border)] text-sm font-medium text-slate-300 hover:text-white transition-all disabled:opacity-50 self-start sm:self-auto"
-        >
-          <RefreshCw className={`w-4 h-4 text-cyan-400 ${refreshing ? "animate-spin" : ""}`} />
-          {refreshing ? "Refreshing..." : "Refresh Feed"}
-        </button>
+        <div className="flex items-center gap-2 self-start sm:self-auto">
+          <button
+            onClick={handleGenerateRoster}
+            disabled={generating}
+            title="Create today's jobs from active subscriptions and assign cleaners by tower"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-sm font-semibold text-emerald-300 transition-all disabled:opacity-50"
+          >
+            <CalendarPlus className={`w-4 h-4 ${generating ? "animate-pulse" : ""}`} />
+            {generating ? "Building..." : "Generate Roster"}
+          </button>
+
+          <button
+            onClick={handleRefresh}
+            disabled={refreshing}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-[var(--glass-border)] text-sm font-medium text-slate-300 hover:text-white transition-all disabled:opacity-50"
+          >
+            <RefreshCw className={`w-4 h-4 text-cyan-400 ${refreshing ? "animate-spin" : ""}`} />
+            {refreshing ? "Refreshing..." : "Refresh Feed"}
+          </button>
+        </div>
       </div>
 
       {/* KPI Summary Bar */}
