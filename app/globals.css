@@ -4,48 +4,49 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* SmartCar Care - Automotive Dark Theme */
-  --background: oklch(0.13 0.005 260);
-  --foreground: oklch(0.93 0.005 260);
-  --card: oklch(0.18 0.008 260);
-  --card-foreground: oklch(0.93 0.005 260);
-  --popover: oklch(0.16 0.006 260);
-  --popover-foreground: oklch(0.93 0.005 260);
-  --primary: oklch(0.72 0.19 220);
-  --primary-foreground: oklch(0.13 0.005 260);
-  --secondary: oklch(0.22 0.008 260);
-  --secondary-foreground: oklch(0.85 0.01 260);
-  --muted: oklch(0.22 0.008 260);
-  --muted-foreground: oklch(0.6 0.01 260);
-  --accent: oklch(0.72 0.19 220);
-  --accent-foreground: oklch(0.13 0.005 260);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.95 0.01 27);
-  --border: oklch(0.28 0.01 260);
-  --input: oklch(0.22 0.008 260);
-  --ring: oklch(0.72 0.19 220);
-  --chart-1: oklch(0.72 0.19 220);
-  --chart-2: oklch(0.65 0.15 180);
-  --chart-3: oklch(0.55 0.12 260);
-  --chart-4: oklch(0.75 0.1 90);
-  --chart-5: oklch(0.6 0.2 30);
+  /* SmartCar Care - Summer Green Theme */
+  --background: #0F1511;
+  --foreground: #E2F0E4;
+  --card: #182019;
+  --card-foreground: #E2F0E4;
+  --popover: #182019;
+  --popover-foreground: #E2F0E4;
+  --primary: #2E9E44;
+  --primary-foreground: #FFFFFF;
+  --primary-dark: #166534;
+  --secondary: #1E2C21;
+  --secondary-foreground: #C8D9CB;
+  --muted: #1E2C21;
+  --muted-foreground: #7C8C7E;
+  --accent: #7ED37F;
+  --accent-foreground: #0F1511;
+  --destructive: #E5484D;
+  --destructive-foreground: #FFFFFF;
+  --border: #1E2C21;
+  --input: #1E2C21;
+  --ring: #2E9E44;
+  --chart-1: #2E9E44;
+  --chart-2: #7ED37F;
+  --chart-3: #F4A300;
+  --chart-4: #3B82F6;
+  --chart-5: #E5484D;
   --radius: 0.75rem;
-  --sidebar: oklch(0.15 0.006 260);
-  --sidebar-foreground: oklch(0.93 0.005 260);
-  --sidebar-primary: oklch(0.72 0.19 220);
-  --sidebar-primary-foreground: oklch(0.13 0.005 260);
-  --sidebar-accent: oklch(0.22 0.008 260);
-  --sidebar-accent-foreground: oklch(0.93 0.005 260);
-  --sidebar-border: oklch(0.28 0.01 260);
-  --sidebar-ring: oklch(0.72 0.19 220);
+  --sidebar: #182019;
+  --sidebar-foreground: #E2F0E4;
+  --sidebar-primary: #2E9E44;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1E2C21;
+  --sidebar-accent-foreground: #E2F0E4;
+  --sidebar-border: #1E2C21;
+  --sidebar-ring: #2E9E44;
 
   /* Custom tokens */
-  --glass: oklch(0.2 0.01 260 / 0.6);
-  --glass-border: oklch(0.4 0.015 220 / 0.2);
-  --glow: oklch(0.72 0.19 220 / 0.3);
-  --surface: oklch(0.16 0.006 260);
-  --surface-foreground: oklch(0.85 0.01 260);
-  --metallic: oklch(0.7 0.01 260);
+  --glass: rgba(24, 32, 25, 0.6);
+  --glass-border: rgba(126, 211, 127, 0.2);
+  --glow: rgba(46, 158, 68, 0.3);
+  --surface: #182019;
+  --surface-foreground: #C8D9CB;
+  --metallic: oklch(0.7 0.01 150);
 }
 
 @theme inline {
@@ -59,6 +60,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-dark: var(--primary-dark);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -236,8 +238,8 @@
 
 @keyframes pulse-ring {
   0% { box-shadow: 0 0 0 0 var(--primary); }
-  70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+  70% { box-shadow: 0 0 0 10px rgba(46, 158, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 158, 68, 0); }
 }
 
 @keyframes glow-pulse {

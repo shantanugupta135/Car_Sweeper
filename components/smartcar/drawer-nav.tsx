@@ -125,7 +125,7 @@ export function DrawerNav() {
                         : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                     )}
                   >
-                    <item.icon className={cn("h-[18px] w-[18px]", isActive && "drop-shadow-[0_0_6px_oklch(0.72_0.19_220)]")} />
+                    <item.icon className={cn("h-[18px] w-[18px]", isActive && "drop-shadow-[0_0_6px_#2E9E44]")} />
                     {item.label}
                     {isActive && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-primary" />}
                   </button>
@@ -151,7 +151,7 @@ export function DrawerNav() {
                         : "text-muted-foreground hover:bg-secondary hover:text-foreground"
                     )}
                   >
-                    <item.icon className={cn("h-[18px] w-[18px]", isActive && "drop-shadow-[0_0_6px_oklch(0.72_0.19_220)]")} />
+                    <item.icon className={cn("h-[18px] w-[18px]", isActive && "drop-shadow-[0_0_6px_#2E9E44]")} />
                     {item.label}
                     {isActive && <span className="ml-auto h-1.5 w-1.5 rounded-full bg-primary" />}
                   </button>

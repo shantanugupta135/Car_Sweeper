@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
 
 export type Screen =
   | "home"
@@ -11,6 +11,12 @@ export type Screen =
   | "rating"
   | "complaint"
   | "profile"
+  | "admin-overview"
+  | "admin-cleaners"
+  | "admin-societies"
+  | "admin-consumers"
+  | "admin-daily-monitor"
+  | "admin-complaints"
 
 interface NavigationContextType {
   screen: Screen
@@ -22,17 +28,20 @@ interface NavigationContextType {
 const NavigationContext = createContext<NavigationContextType | null>(null)
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
-  const [screenHistory, setScreenHistory] = useState<Screen[]>(["home"])
+  const [screenHistory, setScreenHistory] = useState<Screen[]>(["admin-overview"])
 
   const screen = screenHistory[screenHistory.length - 1]
 
-  const navigate = (newScreen: Screen) => {
-    setScreenHistory((prev) => [...prev, newScreen])
-  }
+  const navigate = useCallback((newScreen: Screen) => {
+    setScreenHistory((prev) => {
+      if (prev[prev.length - 1] === newScreen) return prev
+      return [...prev, newScreen]
+    })
+  }, [])
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
     setScreenHistory((prev) => (prev.length > 1 ? prev.slice(0, -1) : prev))
-  }
+  }, [])
 
   return (
     <NavigationContext.Provider value={{ screen, navigate, goBack, history: screenHistory }}>

@@ -7,21 +7,22 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
 
 export const metadata: Metadata = {
-  title: "Car Glow- Premium Vehicle Care",
+  title: "SmartCar Care - Premium Vehicle Care",
   description:
     "Premium automotive service platform. Manage daily doorstep car cleaning with a luxury dashboard experience.",
+  generator: "v0.app",
   icons: {
     icon: [
-      { url: "/icon-light-64x64.png", media: "(prefers-color-scheme: light)" },
-      { url: "/icon-darkwatt-32x32.png", media: "(prefers-color-scheme: dark)" },
-      // { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-light-32x32.png", media: "(prefers-color-scheme: light)" },
+      { url: "/icon-dark-32x32.png", media: "(prefers-color-scheme: dark)" },
+      { url: "/icon.svg", type: "image/svg+xml" },
     ],
     apple: "/apple-icon.png",
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a12",
+  themeColor: "#0F1511",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,

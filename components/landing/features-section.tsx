@@ -25,7 +25,7 @@ const features = [
 export function FeaturesSection() {
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,212,255,0.04),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,158,68,0.04),transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">

@@ -41,8 +41,8 @@ export function SignupScreen({ onNavigate }: { onNavigate: (page: string) => voi
   return (
     <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden px-6 py-12">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(0,212,255,0.08),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(0,212,255,0.05),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(46,158,68,0.08),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(46,158,68,0.05),transparent_60%)]" />
 
       <div className="relative z-10 w-full max-w-md">
         {/* Logo */}
@@ -156,7 +156,7 @@ export function SignupScreen({ onNavigate }: { onNavigate: (page: string) => voi
             <button
               type="submit"
               disabled={isLoading}
-              className="group flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,212,255,0.3)] disabled:opacity-60 disabled:cursor-not-allowed mt-1"
+              className="group flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_25px_rgba(46,158,68,0.3)] disabled:opacity-60 disabled:cursor-not-allowed mt-1"
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />

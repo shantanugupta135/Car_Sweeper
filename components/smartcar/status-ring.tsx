@@ -33,15 +33,15 @@ export function StatusRing({
   }, [progress])
 
   const statusColor = {
-    waiting: "stroke-amber-400",
+    waiting: "stroke-[#F4A300]",
     cleaning: "stroke-primary",
-    completed: "stroke-emerald-400",
+    completed: "stroke-primary-dark",
   }
 
   const statusGlow = {
-    waiting: "drop-shadow(0 0 6px oklch(0.8 0.15 90))",
-    cleaning: "drop-shadow(0 0 6px oklch(0.72 0.19 220))",
-    completed: "drop-shadow(0 0 6px oklch(0.7 0.18 160))",
+    waiting: "drop-shadow(0 0 6px #F4A300)",
+    cleaning: "drop-shadow(0 0 6px #2E9E44)",
+    completed: "drop-shadow(0 0 6px #166534)",
   }
 
   return (

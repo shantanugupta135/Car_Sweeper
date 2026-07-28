@@ -61,22 +61,22 @@ function AnimatedCar() {
           viewBox="0 0 160 100"
           className="drop-shadow-2xl"
           style={{
-            filter: "drop-shadow(0 0 20px rgba(0, 212, 255, 0.3))",
+            filter: "drop-shadow(0 0 20px rgba(46, 158, 68, 0.3))",
           }}
         >
           {/* Car body */}
-          <rect x="20" y="50" width="120" height="35" rx="6" fill="#00d4ff" opacity="0.1" stroke="#00d4ff" strokeWidth="2" />
+          <rect x="20" y="50" width="120" height="35" rx="6" fill="#2E9E44" opacity="0.1" stroke="#2E9E44" strokeWidth="2" />
           {/* Car top */}
-          <rect x="40" y="30" width="80" height="25" rx="4" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" strokeWidth="2" />
+          <rect x="40" y="30" width="80" height="25" rx="4" fill="#2E9E44" opacity="0.15" stroke="#2E9E44" strokeWidth="2" />
           {/* Windows */}
-          <rect x="50" y="35" width="25" height="18" fill="#0a0a0f" stroke="#00d4ff" strokeWidth="1" opacity="0.5" />
-          <rect x="85" y="35" width="25" height="18" fill="#0a0a0f" stroke="#00d4ff" strokeWidth="1" opacity="0.5" />
+          <rect x="50" y="35" width="25" height="18" fill="#0a0a0f" stroke="#2E9E44" strokeWidth="1" opacity="0.5" />
+          <rect x="85" y="35" width="25" height="18" fill="#0a0a0f" stroke="#2E9E44" strokeWidth="1" opacity="0.5" />
           {/* Wheels */}
-          <circle cx="40" cy="85" r="8" fill="#00d4ff" opacity="0.6" stroke="#00d4ff" strokeWidth="2" />
-          <circle cx="120" cy="85" r="8" fill="#00d4ff" opacity="0.6" stroke="#00d4ff" strokeWidth="2" />
+          <circle cx="40" cy="85" r="8" fill="#2E9E44" opacity="0.6" stroke="#2E9E44" strokeWidth="2" />
+          <circle cx="120" cy="85" r="8" fill="#2E9E44" opacity="0.6" stroke="#2E9E44" strokeWidth="2" />
           {/* Headlights */}
-          <circle cx="22" cy="60" r="3" fill="#00d4ff" />
-          <circle cx="30" cy="60" r="3" fill="#00d4ff" />
+          <circle cx="22" cy="60" r="3" fill="#2E9E44" />
+          <circle cx="30" cy="60" r="3" fill="#2E9E44" />
         </svg>
 
         {/* Sweeper brush following car */}
@@ -89,13 +89,13 @@ function AnimatedCar() {
           {/* Brush head */}
           <svg width="50" height="60" viewBox="0 0 50 60" className="drop-shadow-lg">
             {/* Handle */}
-            <rect x="22" y="0" width="6" height="40" fill="#00d4ff" opacity="0.4" />
+            <rect x="22" y="0" width="6" height="40" fill="#2E9E44" opacity="0.4" />
             {/* Bristles */}
-            <circle cx="25" cy="45" r="12" fill="#00d4ff" opacity="0.3" stroke="#00d4ff" strokeWidth="1" />
-            <line x1="13" y1="45" x2="37" y2="45" stroke="#00d4ff" strokeWidth="1" opacity="0.3" />
-            <line x1="15" y1="48" x2="35" y2="48" stroke="#00d4ff" strokeWidth="1" opacity="0.3" />
-            <line x1="15" y1="52" x2="35" y2="52" stroke="#00d4ff" strokeWidth="1" opacity="0.3" />
-            <line x1="17" y1="55" x2="33" y2="55" stroke="#00d4ff" strokeWidth="1" opacity="0.3" />
+            <circle cx="25" cy="45" r="12" fill="#2E9E44" opacity="0.3" stroke="#2E9E44" strokeWidth="1" />
+            <line x1="13" y1="45" x2="37" y2="45" stroke="#2E9E44" strokeWidth="1" opacity="0.3" />
+            <line x1="15" y1="48" x2="35" y2="48" stroke="#2E9E44" strokeWidth="1" opacity="0.3" />
+            <line x1="15" y1="52" x2="35" y2="52" stroke="#2E9E44" strokeWidth="1" opacity="0.3" />
+            <line x1="17" y1="55" x2="33" y2="55" stroke="#2E9E44" strokeWidth="1" opacity="0.3" />
           </svg>
         </div>
 
@@ -120,7 +120,7 @@ function AnimatedCar() {
           className="absolute inset-0 opacity-0"
           style={{
             animation: "carShine 6s ease-in-out infinite",
-            background: "linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.4), transparent)",
+            background: "linear-gradient(90deg, transparent, rgba(46, 158, 68, 0.4), transparent)",
             width: "40px",
             height: "35px",
             top: "50px",
@@ -245,8 +245,8 @@ export function LoginScreen({ onNavigate }: { onNavigate: (page: string) => void
   return (
     <div className="min-h-screen bg-background flex items-center justify-center relative overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,212,255,0.15),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,212,255,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(46,158,68,0.15),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(46,158,68,0.1),transparent_50%)]" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 

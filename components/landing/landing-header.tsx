@@ -38,10 +38,10 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="flex items-center gap-2.5">
-          <div className="w-20 h-20 rounded-lg items-center justify-center flex">
-            <Image src="/images/carsglow-logo.png" alt="CarsGlow" width={100} height={100} className="object-cover" />
+          <div className="w-9 h-9 rounded-lg overflow-hidden">
+            <Image src="/images/carsglow-logo.jpg" alt="CarsGlow" width={36} height={36} className="object-cover" />
           </div>
-          <span className="font-bold text-foreground text-lg">CarsGlo</span>
+          <span className="font-bold text-foreground text-lg">CarsGlow</span>
         </button>
 
         {/* Desktop nav */}
@@ -57,19 +57,13 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
           ))}
         </nav>
 
-        {/* Desktop auth buttons - Hidden but code kept intact */}
+        {/* Desktop auth buttons - Hidden */}
         <div className="hidden md:flex items-center gap-3 invisible">
           <button
-            onClick={() => onNavigate("phone-login")}
+            onClick={() => onNavigate("login")}
             className="px-5 py-2 rounded-lg text-sm font-medium text-foreground hover:bg-card transition-colors"
           >
             Log In
-          </button>
-          <button
-            onClick={() => onNavigate("phone-login")}
-            className="px-5 py-2 rounded-lg text-sm font-medium bg-primary text-primary-foreground transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,212,255,0.25)]"
-          >
-            Sign Up Free
           </button>
         </div>
 
@@ -92,18 +86,12 @@ export function LandingHeader({ onNavigate }: { onNavigate: (page: string) => vo
                 {link.label}
               </button>
             ))}
-            <div className="flex flex-col gap-2 pt-3 border-t border-border invisible">
+            <div className="flex flex-col gap-2 pt-3 border-t border-border">
               <button
-                onClick={() => { setMenuOpen(false); onNavigate("phone-login") }}
-                className="w-full py-2.5 rounded-lg text-sm font-medium text-foreground border border-border hover:bg-card transition-colors"
+                onClick={() => { setMenuOpen(false); onNavigate("login") }}
+                className="w-full py-2.5 rounded-lg text-sm font-semibold border border-primary/40 text-primary hover:bg-primary/10 transition-colors flex items-center justify-center gap-2"
               >
-                Log In
-              </button>
-              <button
-                onClick={() => { setMenuOpen(false); onNavigate("phone-login") }}
-                className="w-full py-2.5 rounded-lg text-sm font-medium bg-primary text-primary-foreground"
-              >
-                Sign Up Free
+                🛡️ Admin Login
               </button>
             </div>
           </div>

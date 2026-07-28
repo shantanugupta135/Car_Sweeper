@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Droplets, ArrowRight, Star } from "lucide-react"
 
-const WHATSAPP_URL = "https://wa.me/9953745105?text=Hi%20CarsGlo%20team!%20I%20am%20interested%20in%20your%20car%20service%20🚗%20⚡%20I’ll%20fill%20details%20here:%20https://forms.gle/p9wKFGminZz2mmr4A"
+const WHATSAPP_URL = "https://wa.me/919953745105"
 
 export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void }) {
   const handleBookPremium = () => {
@@ -19,8 +19,8 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background gradient layers */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,212,255,0.08),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(0,212,255,0.05),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(46,158,68,0.08),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(46,158,68,0.05),transparent_60%)]" />
 
       {/* Floating particles */}
       <div className="absolute top-1/4 left-1/4 w-1 h-1 rounded-full bg-primary/40 animate-pulse" />
@@ -121,7 +121,7 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
           {/* Right - Animated Car Washing Scene */}
           <div className="relative flex items-center justify-center h-[500px]">
             {/* Background glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.15),transparent_70%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,158,68,0.15),transparent_70%)]" />
 
             <div className="relative w-full h-full flex flex-col items-center justify-center">
               {/* Animated car container */}
@@ -152,9 +152,9 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                   <div className="w-1 h-20 bg-gradient-to-b from-gray-400 to-gray-600 rounded-full mx-auto" />
                   {/* Brush head */}
                   <svg className="w-16 h-12 -mx-6" viewBox="0 0 100 80" fill="none">
-                    <ellipse cx="50" cy="20" rx="35" ry="15" fill="rgba(100,180,200,0.8)" />
-                    <path d="M 20 20 Q 20 35 50 50 Q 80 35 80 20" fill="rgba(100,180,200,0.6)" />
-                    <path d="M 30 25 Q 30 32 50 42 Q 70 32 70 25" fill="rgba(150,210,230,0.7)" stroke="rgba(150,210,230,0.9)" strokeWidth="1" />
+                    <ellipse cx="50" cy="20" rx="35" ry="15" fill="rgba(46,158,68,0.8)" />
+                    <path d="M 20 20 Q 20 35 50 50 Q 80 35 80 20" fill="rgba(46,158,68,0.6)" />
+                    <path d="M 30 25 Q 30 32 50 42 Q 70 32 70 25" fill="rgba(126,211,127,0.7)" stroke="rgba(126,211,127,0.9)" strokeWidth="1" />
                   </svg>
                 </div>
 
@@ -169,7 +169,7 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                       animationDelay: `${i * 0.2}s`
                     }}
                   >
-                    <div className="w-2 h-2 bg-blue-400 rounded-full opacity-70 blur-sm" />
+                    <div className="w-2 h-2 bg-accent rounded-full opacity-70 blur-sm" />
                   </div>
                 ))}
 
@@ -184,13 +184,13 @@ export function HeroSection({ onNavigate }: { onNavigate: (page: string) => void
                       animationDelay: `${i * 0.3}s`
                     }}
                   >
-                    <div className="w-3 h-3 border border-cyan-400/50 rounded-full" />
+                    <div className="w-3 h-3 border border-accent/50 rounded-full" />
                   </div>
                 ))}
 
                 {/* Spray effect */}
                 <div className="absolute left-0 top-1/2 w-20 h-20 pointer-events-none">
-                  <svg className="w-full h-full text-cyan-400/40" viewBox="0 0 100 100" fill="none">
+                  <svg className="w-full h-full text-accent/40" viewBox="0 0 100 100" fill="none">
                     <line x1="50" y1="50" x2="90" y2="50" stroke="currentColor" strokeWidth="2" opacity="0.5" />
                     <line x1="50" y1="50" x2="25" y2="15.36" stroke="currentColor" strokeWidth="2" opacity="0.5" />
                     <line x1="50" y1="50" x2="25" y2="84.64" stroke="currentColor" strokeWidth="2" opacity="0.5" />

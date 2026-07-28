@@ -2,7 +2,7 @@
 
 import { Check } from "lucide-react"
 
-const WHATSAPP_URL = "https://wa.me/9953745105?text=Hi%20CarsGlo%20team!%20I%20am%20interested%20in%20your%20car%20service%20🚗%20⚡%20I’ll%20fill%20details%20here:%20https://forms.gle/p9wKFGminZz2mmr4A"
+const WHATSAPP_URL = "https://wa.me/919953745105"
 
 const plans = [
   {
@@ -51,7 +51,7 @@ export function PricingSection({ onNavigate }: { onNavigate: (page: string) => v
 
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,212,255,0.05),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(46,158,68,0.05),transparent_60%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
@@ -72,7 +72,7 @@ export function PricingSection({ onNavigate }: { onNavigate: (page: string) => v
               key={idx}
               className={`relative flex flex-col p-8 rounded-2xl border transition-all duration-300 ${
                 plan.popular
-                  ? "border-primary/40 bg-primary/[0.04] shadow-[0_0_40px_rgba(0,212,255,0.08)] scale-[1.02]"
+                  ? "border-primary/40 bg-primary/[0.04] shadow-[0_0_40px_rgba(46,158,68,0.08)] scale-[1.02]"
                   : "border-border bg-card/30 hover:border-primary/20"
               }`}
             >
@@ -112,7 +112,7 @@ export function PricingSection({ onNavigate }: { onNavigate: (page: string) => v
                 onClick={handleGetStarted}
                 className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                   plan.popular
-                    ? "bg-primary text-primary-foreground hover:shadow-[0_0_20px_rgba(0,212,255,0.3)]"
+                    ? "bg-primary text-primary-foreground hover:shadow-[0_0_20px_rgba(46,158,68,0.3)]"
                     : "bg-card border border-border text-foreground hover:border-primary/30"
                 }`}
               >

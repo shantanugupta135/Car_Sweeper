@@ -36,7 +36,7 @@ const solutions = [
 export function SolutionSection() {
   return (
     <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,212,255,0.06),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(46,158,68,0.06),transparent_70%)]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">

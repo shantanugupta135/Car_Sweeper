@@ -2,28 +2,39 @@
 
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react"
 
+export type UserRole = "owner" | "cleaner" | "admin"
+
 interface User {
   id: string
   name: string
   email: string
   phone: string
   avatar?: string
+  role?: UserRole
 }
 
 interface AuthContextType {
   user: User | null
+  role: UserRole
   isAuthenticated: boolean
   isLoading: boolean
   login: (email: string, password: string) => Promise<boolean>
   signup: (name: string, email: string, phone: string, password: string) => Promise<boolean>
   logout: () => void
+  setRole: (role: UserRole) => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
+  const [role, setRoleState] = useState<UserRole>("admin")
   const [isLoading, setIsLoading] = useState(false)
+
+  const setRole = useCallback((newRole: UserRole) => {
+    setRoleState((prev) => (prev === newRole ? prev : newRole))
+    setUser((prev) => (prev && prev.role !== newRole ? { ...prev, role: newRole } : prev))
+  }, [])
 
   const login = useCallback(async (email: string, password: string) => {
     setIsLoading(true)
@@ -35,7 +46,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         name: email.split("@")[0].replace(/[._]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
         email,
         phone: "+91 98765 43210",
+        role: "admin",
       })
+      setRoleState("admin")
       setIsLoading(false)
       return true
     }
@@ -47,7 +60,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(true)
     await new Promise((r) => setTimeout(r, 1500))
     if (name && email && phone && password.length >= 6) {
-      setUser({ id: "usr_" + Date.now(), name, email, phone })
+      setUser({ id: "usr_" + Date.now(), name, email, phone, role: "admin" })
+      setRoleState("admin")
       setIsLoading(false)
       return true
     }
@@ -59,8 +73,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null)
   }, [])
 
+  const currentRole = user?.role || role
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, isLoading, login, signup, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        role: currentRole,
+        isAuthenticated: !!user,
+        isLoading,
+        login,
+        signup,
+        logout,
+        setRole,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   )

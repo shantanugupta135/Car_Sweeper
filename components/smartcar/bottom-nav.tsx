@@ -34,7 +34,7 @@ export function BottomNav() {
                 isActive ? "text-primary" : "text-muted-foreground"
               )}
             >
-              <tab.icon className={cn("h-5 w-5", isActive && "drop-shadow-[0_0_6px_oklch(0.72_0.19_220)]")} />
+              <tab.icon className={cn("h-5 w-5", isActive && "drop-shadow-[0_0_6px_#2E9E44]")} />
               <span className="text-[10px] font-medium">{tab.label}</span>
               {isActive && (
                 <span className="h-0.5 w-4 rounded-full bg-primary" />

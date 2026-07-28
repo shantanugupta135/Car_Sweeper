@@ -25,7 +25,7 @@ export function FloatingParticles({ count = 20, density = 'medium', className = 
         position: absolute;
         width: ${size}px;
         height: ${size}px;
-        background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.8), rgba(0, 212, 255, 0.1));
+        background: radial-gradient(circle at 30% 30%, rgba(46, 158, 68, 0.8), rgba(46, 158, 68, 0.1));
         border-radius: 50%;
         left: ${left}%;
         bottom: -20px;

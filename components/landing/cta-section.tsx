@@ -12,7 +12,7 @@ export function CTASection({ onNavigate }: { onNavigate: (page: string) => void 
   return (
     <section className="relative py-24 overflow-hidden">
       {/* Glowing background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,212,255,0.1),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(46,158,68,0.1),transparent_60%)]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <div className="p-12 sm:p-16 rounded-3xl border border-primary/20 bg-gradient-to-b from-primary/[0.06] to-transparent">
@@ -34,7 +34,7 @@ export function CTASection({ onNavigate }: { onNavigate: (page: string) => void 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={handleGetStarted}
-              className="group flex items-center gap-2 px-10 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,212,255,0.35)] hover:scale-[1.02] active:scale-[0.98]"
+              className="group flex items-center gap-2 px-10 py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg transition-all duration-300 hover:shadow-[0_0_40px_rgba(46,158,68,0.35)] hover:scale-[1.02] active:scale-[0.98]"
             >
               Claim Free Trial
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
